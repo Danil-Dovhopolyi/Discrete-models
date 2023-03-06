@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Зчитуємо дані з файлу
-const data = fs.readFileSync('Second.txt', 'utf8');
+const data = fs.readFileSync('Lab1/Third.txt', 'utf8');
 
 // Розділяю текст на рядки, видаляю перший рядок і створюю масив масивів рядків
 const rows = data.trim().split('\n');
@@ -18,7 +18,7 @@ function primMST(graph, type) {
 
   // Ініціалізуємо всі ключі як найбільші або найменші можливі значення
   let initValue =
-    type === 'max' ? Number.MIN_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
+    type === MAX ? Number.MIN_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
   for (let i = 0; i < V; i++) {
     key[i] = initValue;
     mstSet[i] = false;
@@ -30,7 +30,7 @@ function primMST(graph, type) {
 
   for (let count = 0; count < V - 1; count++) {
     // Знаходимо вузол з найбільшим або найменшим ключем
-    let u = type === 'max' ? maxKey(key, mstSet) : minKey(key, mstSet);
+    let u = type === MAX ? maxKey(key, mstSet) : minKey(key, mstSet);
 
     // Додаємо цей вузол до MST
     mstSet[u] = true;
@@ -40,7 +40,7 @@ function primMST(graph, type) {
       if (
         graph[u][v] &&
         !mstSet[v] &&
-        (type === 'max' ? graph[u][v] > key[v] : graph[u][v] < key[v])
+        (type === MAX ? graph[u][v] > key[v] : graph[u][v] < key[v])
       ) {
         parent[v] = u;
         key[v] = graph[u][v];
@@ -86,4 +86,4 @@ function printMST(parent, graph) {
   }
 }
 
-primMST(arr, MIN);
+primMST(arr, MAX);
