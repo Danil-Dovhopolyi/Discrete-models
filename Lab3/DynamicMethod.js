@@ -1,21 +1,13 @@
 const fs = require('fs');
 
 // Зчитуємо дані з файлу
-const data = fs.readFileSync('First.txt', 'utf8');
+const data = fs.readFileSync('Lab3/First.txt', 'utf8');
 
 // Розділяю текст на рядки, видаляю перший рядок і створюю масив масивів рядків
 const rows = data.trim().split('\n');
 rows.shift(); // видаляю перший рядок
 const arr = rows.map((row) => row.split(' ').map(Number));
 // Вхідна матриця суміжності
-const matrix = [
-  [0, 0, 69, 60, 10, 20],
-  [0, 0, 0, 31, 39, 2],
-  [69, 0, 0, 0, 59, 0],
-  [60, 31, 0, 0, 0, 36],
-  [10, 39, 59, 0, 0, 79],
-  [20, 2, 0, 36, 79, 0],
-];
 
 // Функція для обчислення найкоротшого шляху та пройденого шляху за допомогою методу динамічного програмування
 function tspDynamicProgramming(matrix) {
@@ -54,6 +46,6 @@ function tspDynamicProgramming(matrix) {
 }
 
 // Виклик функції та виведення результату
-const { shortestDistance, path } = tspDynamicProgramming(matrix);
+const { shortestDistance, path } = tspDynamicProgramming(arr);
 console.log(`Найкоротший шлях: ${shortestDistance}`);
 console.log(`Пройдений шлях: ${path}`);
