@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Зчитуємо дані з файлу
-const data = fs.readFileSync('Example.txt', 'utf8');
+const data = fs.readFileSync('RGR/Data3.txt', 'utf8');
 
 // Розділяю текст на рядки, видаляю перший рядок і створюю масив масивів рядків
 const rows = data.trim().split('\n');
